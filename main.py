@@ -40,7 +40,7 @@ for person in data_dict:
         # login
         connection.login(user=MY_EMAIL, password=MY_PASSWORD)
         # send mail
-        connection.sendmail(from_addr=my_email,
+        connection.sendmail(from_addr=MY_EMAIL,
                             to_addrs=f"{person["email"]}",
                             msg=f"Subject:Happy Birthday\n\n{edited_letter}")
 
