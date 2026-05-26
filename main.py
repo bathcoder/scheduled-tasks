@@ -5,9 +5,9 @@
 # 4. Update birthdays.csv to contain today's month and day.
 # See the solution video in the 100 Days of Python Course for explainations.
 
-import pandas as pd
-import datetime as dt
-from random import randint
+import pandas
+import datetime
+import random
 import smtplib
 import os 
 
@@ -16,18 +16,18 @@ MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
 
 #--DATA HANDLING--
-data = pd.read_csv("birthdays.csv")
+data = pandas.read_csv("birthdays.csv")
 data_dict = data.to_dict(orient="records")
 print(data_dict)
 
-now = dt.datetime.now()
+now = datetime.datetime.now()
 month = now.month
 day = now.day
 for person in data_dict:
     birth_day = person["day"]
     birth_month = person["month"]
     if birth_day == day and birth_month == month:
-        letter_choice = randint(1,3)
+        letter_choice = random.randint(1,3)
         with open(f"./letter_templates/letter_{letter_choice}.txt") as f:
             data = f.read()
             edited_letter = data.replace("[NAME]", person["name"])
