@@ -9,10 +9,11 @@ import pandas as pd
 import datetime as dt
 from random import randint
 import smtplib
+import os 
 
-my_email = "ngelasayz@gmail.com"
-PASSWORD = "Brinkman57!"
-GOOGLE_APP_PASSWORD = "dhej xcmm piiu wnty"
+MY_EMAIL = os.environ.get("MY_EMAIL")
+MY_PASSWORD = os.environ.get("MY_PASSWORD")
+
 
 #--DATA HANDLING--
 data = pd.read_csv("birthdays.csv")
@@ -37,7 +38,7 @@ for person in data_dict:
         connection.starttls()
 
         # login
-        connection.login(user=my_email, password=GOOGLE_APP_PASSWORD)
+        connection.login(user=MY_EMAIL, password=MY_PASSWORD)
         # send mail
         connection.sendmail(from_addr=my_email,
                             to_addrs=f"{person["email"]}",
