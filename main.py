@@ -32,15 +32,15 @@ for person in data_dict:
             data = f.read()
             edited_letter = data.replace("[NAME]", person["name"])
 
-    with smtplib.SMTP("smtp.gmail.com") as connection:
+        with smtplib.SMTP("smtp.gmail.com") as connection:
 
-        # Encryption service
-        connection.starttls()
+            # Encryption service
+            connection.starttls()
 
         # login
-        connection.login(user=MY_EMAIL, password=MY_PASSWORD)
+            connection.login(user=MY_EMAIL, password=MY_PASSWORD)
         # send mail
-        connection.sendmail(from_addr=MY_EMAIL,
-                            to_addrs=f"{person["email"]}",
-                            msg=f"Subject:Happy Birthday\n\n{edited_letter}")
+            connection.sendmail(from_addr=MY_EMAIL,
+                                to_addrs=f"{person["email"]}",
+                                msg=f"Subject:Happy Birthday\n\n{edited_letter}")
 
